@@ -36,6 +36,8 @@
     "nativeLanguage": "ko",
     "packageFolder": "com/kepco/katalk",
     "jwtSecretKey": "ZTJlNTk5YmUwOTkwZjQxMzFiYzRjYTQ3NjEzNjFkNTYyNTUzNjUxYmZiOGFjMjdmYTQ2OGNiNzNmMzVmZGZmNWZlZTI0ODI2Nzk3YzhjZmI3Y2EwMjlmYzk4MzgxZmVhNjRjYTM1MDkyYTg0NzZmN2YzNjI0MWZhMWNhNDg2NjY=",
-    "languages": ["ko", "en"]
+    "languages": ["ko", "en"],
+    "entities": ["TsmsAgentMessage"],
+    "lastLiquibaseTimestamp": 1623953732000
   }
 }

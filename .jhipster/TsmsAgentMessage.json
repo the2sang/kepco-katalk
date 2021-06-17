@@ -1,0 +1,239 @@
+{
+  "name": "TsmsAgentMessage",
+  "fields": [
+    {
+      "fieldName": "messageSeqno",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "serviceSeqno",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "sendMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subject",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "backupMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "backupProcessCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "messageType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contentsType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receiveMobileNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "callbackNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "jobType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sendReserveDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "templateCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgPath1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgPath2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgPath3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imgAttachFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnLink1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnLink2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnLink3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnLink4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoBtnLink5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoImgPath",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoImgLinkUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taxLevel1Nm",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taxLevel2Nm",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registerBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registerDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "custBackupFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custMessageType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custBackupDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "custData1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData7",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData8",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custData10",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sendFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sendDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "resendFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgServerPath1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgServerPath2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mmsImgServerPath3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imgSendDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updateDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updateBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkoImgServerPath",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "intfNm",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sendedId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "tsms_agent_message",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "kepcoKaTalk",
+  "clientRootFolder": "kepcoKaTalk",
+  "databaseType": "sql",
+  "changelogDate": "20210617181532"
+}
