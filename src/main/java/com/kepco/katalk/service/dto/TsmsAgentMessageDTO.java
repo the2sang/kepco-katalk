@@ -2,6 +2,7 @@ package com.kepco.katalk.service.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -33,7 +34,7 @@ public class TsmsAgentMessageDTO implements Serializable {
 
     private String jobType;
 
-    private LocalDate sendReserveDate;
+    private LocalDateTime sendReserveDate;
 
     private String templateCode;
 
@@ -69,7 +70,7 @@ public class TsmsAgentMessageDTO implements Serializable {
 
     private String registerBy;
 
-    private LocalDate registerDate;
+    private LocalDateTime registerDate;
 
     private String custBackupFlag;
 
@@ -217,11 +218,11 @@ public class TsmsAgentMessageDTO implements Serializable {
         this.jobType = jobType;
     }
 
-    public LocalDate getSendReserveDate() {
+    public LocalDateTime getSendReserveDate() {
         return sendReserveDate;
     }
 
-    public void setSendReserveDate(LocalDate sendReserveDate) {
+    public void setSendReserveDate(LocalDateTime sendReserveDate) {
         this.sendReserveDate = sendReserveDate;
     }
 
@@ -361,11 +362,11 @@ public class TsmsAgentMessageDTO implements Serializable {
         this.registerBy = registerBy;
     }
 
-    public LocalDate getRegisterDate() {
+    public LocalDateTime getRegisterDate() {
         return registerDate;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
+    public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
     }
 
