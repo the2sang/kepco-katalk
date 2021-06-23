@@ -2,6 +2,7 @@ package com.kepco.katalk.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -21,13 +22,15 @@ public class TsmsAgentMessage implements Serializable {
     //    @SequenceGenerator(name = "sequenceGenerator")
     //    private Long id;
 
+    //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TSMS_AGENT_MESSAGE_SEQ")
+    //    @SequenceGenerator(name = "TSMS_AGENT_MESSAGE_SEQ")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TSMS_AGENT_MESSAGE_SEQ")
+    @SequenceGenerator(name = "TSMS_AGENT_MESSAGE_SEQ", sequenceName = "TSMS_AGENT_MESSAGE_SEQ", allocationSize = 1)
     @Column(name = "message_seqno")
     private Long messageSeqno;
 
-    @Column(name = "service_seqno")
+    @Column(name = "service_seqno", columnDefinition = "long default 1810013776")
     private Long serviceSeqno;
 
     @Column(name = "send_message")
@@ -39,13 +42,13 @@ public class TsmsAgentMessage implements Serializable {
     @Column(name = "backup_message")
     private String backupMessage;
 
-    @Column(name = "backup_process_code")
+    @Column(name = "backup_process_code", columnDefinition = "varchar2(4) default '003'")
     private String backupProcessCode;
 
-    @Column(name = "message_type")
+    @Column(name = "message_type", columnDefinition = "varchar2(3) default '002'")
     private String messageType;
 
-    @Column(name = "contents_type")
+    @Column(name = "contents_type", columnDefinition = "varchar2(3) default '004'")
     private String contentsType;
 
     @Column(name = "receive_mobile_no")
@@ -57,8 +60,8 @@ public class TsmsAgentMessage implements Serializable {
     @Column(name = "job_type")
     private String jobType;
 
-    @Column(name = "send_reserve_date")
-    private LocalDate sendReserveDate;
+    @Column(name = "send_reserve_date", columnDefinition = "DATE DEFAULT SYSDATE")
+    private LocalDateTime sendReserveDate = LocalDateTime.now();
 
     @Column(name = "template_code")
     private String templateCode;
@@ -72,7 +75,7 @@ public class TsmsAgentMessage implements Serializable {
     @Column(name = "mms_img_path3")
     private String mmsImgPath3;
 
-    @Column(name = "img_attach_flag")
+    @Column(name = "img_attach_flag", columnDefinition = "varchar2(1) default 'N'")
     private String imgAttachFlag;
 
     @Column(name = "kko_btn_name")
@@ -111,13 +114,13 @@ public class TsmsAgentMessage implements Serializable {
     @Column(name = "register_by")
     private String registerBy;
 
-    @Column(name = "register_date")
-    private LocalDate registerDate;
+    @Column(name = "register_date", columnDefinition = "DATE DEFAULT SYSDATE")
+    private LocalDateTime registerDate = LocalDateTime.now();
 
-    @Column(name = "cust_backup_flag")
+    @Column(name = "cust_backup_flag", columnDefinition = "varchar2(1) default 'N'")
     private String custBackupFlag;
 
-    @Column(name = "cust_message_type")
+    @Column(name = "cust_message_type", columnDefinition = "varchar2(1) default 'S'")
     private String custMessageType;
 
     @Column(name = "cust_backup_date")
@@ -153,7 +156,7 @@ public class TsmsAgentMessage implements Serializable {
     @Column(name = "cust_data10")
     private String custData10;
 
-    @Column(name = "send_flag")
+    @Column(name = "send_flag", columnDefinition = "varchar2(1) default 'N'")
     private String sendFlag;
 
     @Column(name = "send_date")
@@ -198,10 +201,10 @@ public class TsmsAgentMessage implements Serializable {
     //        this.id = id;
     //    }
 
-    public TsmsAgentMessage id(Long messageSeqno) {
-        this.messageSeqno = messageSeqno;
-        return this;
-    }
+    //    public TsmsAgentMessage id(Long messageSeqno) {
+    //        this.messageSeqno = messageSeqno;
+    //        return this;
+    //    }
 
     public Long getMessageSeqno() {
         return this.messageSeqno;
@@ -346,17 +349,23 @@ public class TsmsAgentMessage implements Serializable {
         this.jobType = jobType;
     }
 
-    public LocalDate getSendReserveDate() {
+    public LocalDateTime getSendReserveDate() {
         return this.sendReserveDate;
     }
 
-    public TsmsAgentMessage sendReserveDate(LocalDate sendReserveDate) {
+    public TsmsAgentMessage sendReserveDate(LocalDateTime sendReserveDate) {
         this.sendReserveDate = sendReserveDate;
         return this;
     }
 
-    public void setSendReserveDate(LocalDate sendReserveDate) {
+    public void setSendReserveDate(LocalDateTime sendReserveDate) {
         this.sendReserveDate = sendReserveDate;
+    }
+
+    @PrePersist
+    public void sendReserveDate() {
+        this.sendReserveDate = LocalDateTime.now();
+        this.registerDate = LocalDateTime.now();
     }
 
     public String getTemplateCode() {
@@ -580,16 +589,16 @@ public class TsmsAgentMessage implements Serializable {
         this.registerBy = registerBy;
     }
 
-    public LocalDate getRegisterDate() {
+    public LocalDateTime getRegisterDate() {
         return this.registerDate;
     }
 
-    public TsmsAgentMessage registerDate(LocalDate registerDate) {
+    public TsmsAgentMessage registerDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
         return this;
     }
 
-    public void setRegisterDate(LocalDate registerDate) {
+    public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
     }
 
@@ -971,7 +980,7 @@ public class TsmsAgentMessage implements Serializable {
             ", taxLevel1Nm='" + getTaxLevel1Nm() + "'" +
             ", taxLevel2Nm='" + getTaxLevel2Nm() + "'" +
             ", registerBy='" + getRegisterBy() + "'" +
-            ", registerDate='" + getRegisterDate() + "'" +
+         //   ", registerDate='" + getRegisterDate() + "'" +
             ", custBackupFlag='" + getCustBackupFlag() + "'" +
             ", custMessageType='" + getCustMessageType() + "'" +
             ", custBackupDate='" + getCustBackupDate() + "'" +
