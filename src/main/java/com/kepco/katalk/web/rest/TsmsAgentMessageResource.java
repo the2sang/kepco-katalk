@@ -50,6 +50,7 @@ public class TsmsAgentMessageResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new tsmsAgentMessageDTO, or with status {@code 400 (Bad Request)} if the tsmsAgentMessage has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/tsms-agent-messages")
     public ResponseEntity<TsmsAgentMessageDTO> createTsmsAgentMessage(@RequestBody TsmsAgentMessageDTO tsmsAgentMessageDTO)
         throws URISyntaxException {
@@ -62,6 +63,59 @@ public class TsmsAgentMessageResource {
             .created(new URI("/api/tsms-agent-messages/" + result.getMessageSeqno()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getMessageSeqno().toString()))
             .body(result);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/tsms-edi-message")
+    public ResponseEntity<Void> sendEDIKaTalkMessage(
+        @RequestParam("serviceSeqno") String serviceSeqno,
+        @RequestParam("sendMessage") String sendMessage,
+        @RequestParam("backupMessage") String backupMessage,
+        @RequestParam("backupProcessCode") String backupProcessCode,
+        @RequestParam("messageType") String messageType,
+        @RequestParam("contentsType") String contentsType,
+        @RequestParam("receiveMobileNo") String receiveMobileNo,
+        @RequestParam("callbackNo") String callbackNo,
+        @RequestParam("jobType") String jobType,
+        @RequestParam("templateCode") String templateCode,
+        @RequestParam("registerBy") String registerBy,
+        @RequestParam("imgAttachFlag") String imgAttachFlag,
+        @RequestParam("custData1") String custData1,
+        @RequestParam("custData2") String custData2,
+        @RequestParam("custData3") String custData3,
+        @RequestParam("custData4") String custData4,
+        @RequestParam("custBackupFlag") String custBackupFlag,
+        @RequestParam("custMessageType") String custMessageType,
+        @RequestParam("sendFlag") String sendFlag
+    ) {
+        log.debug("REST request to save EDI TsmsAgentMessage : {}", serviceSeqno);
+
+        TsmsAgentMessageDTO dto = new TsmsAgentMessageDTO();
+        dto.setServiceSeqno(Long.parseLong(serviceSeqno));
+        dto.setSendMessage(sendMessage);
+        dto.setBackupMessage(backupMessage);
+        dto.setBackupProcessCode(backupProcessCode);
+        dto.setMessageType(messageType);
+        dto.setContentsType(contentsType);
+        dto.setReceiveMobileNo(receiveMobileNo);
+        dto.setCallbackNo(callbackNo);
+        dto.setJobType(jobType);
+        dto.setTemplateCode(templateCode);
+        dto.setRegisterBy(registerBy);
+        dto.setImgAttachFlag(imgAttachFlag);
+        dto.setCustData1(custData1);
+        dto.setCustData2(custData2);
+        dto.setCustData3(custData3);
+        dto.setCustData4(custData4);
+        dto.setCustBackupFlag(custBackupFlag);
+        dto.setCustMessageType(custMessageType);
+        dto.setSendFlag(sendFlag);
+
+        TsmsAgentMessageDTO result = tsmsAgentMessageService.save(dto);
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, result.getMessageSeqno().toString()))
+            .build();
     }
 
     /**
